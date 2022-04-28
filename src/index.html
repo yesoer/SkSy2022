@@ -10,12 +10,51 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./assets/scss/bootstrap.scss">
     <link rel="stylesheet" href="https://unpkg.com/@icon/bootstrap-icons/bootstrap-icons.css">
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" href="./assets/scss/main.scss" />
   </head>
   <body>
+
+    <!-- Vertical navbar -->
+    <div class="vertical-nav bg-white" id="sidebar">
+      <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+          <a href="#" class="nav-link text-dark font-italic bg-light">
+                    Home
+                </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link text-dark font-italic">
+                    New TODO
+                </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link text-dark font-italic">
+                    Imprint
+                </a>
+        </li>
+      </ul>
+    </div>
+    <!-- End vertical navbar -->
+
+
+    <!-- Page content holder -->
+    <div class="page-content p-5" id="content">
+      
+      <!-- Nav bar opener -->
+      <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4">
+        <i class="bi bi-list"></i>
+      </button>
+
+    </div>
+    <!-- End page content holder -->
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <!-- Bootstrap JS -->
     <script type="module" src="./assets/js/bootstrap.js"></script>
+    <script type="module" src="./assets/js/main.js"></script>
   </body>
 </html>
