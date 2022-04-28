@@ -1,0 +1,9 @@
+# macos
+.DS_Store
+
+# node
+node_modules
+
+# parcel
+.parcel-cache
+dist
