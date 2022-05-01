@@ -1,6 +1,7 @@
 /* npm package imports */
 import 'bootstrap';
 import 'bootstrap-slider';
+window.$ = window.jQuery = require("jquery");
 import 'bootstrap-datepicker';
 
 $(function() {
