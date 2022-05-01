@@ -31,7 +31,7 @@
   For nav bar toggle behavior 
 */
 
-#sidebar.active {
+#navbar.active {
   margin-left: -5cm;
 }
 
@@ -40,11 +40,12 @@
   margin: 0;
 }
 
+/* navbar default is open if width >= 768px */
 @media (max-width: 768px) {
-  #sidebar {
+  #navbar {
     margin-left: -5cm;
   }
-  #sidebar.active {
+  #navbar.active {
     margin-left: 0;
   }
   #content {
@@ -56,4 +57,12 @@
     width: calc(100% - 5cm);
   }
 }
-  
+
+/* highlight navbar item corresponding to the current page */
+#navitem {
+  background-color: rgba($color: #FFFFFF, $alpha: 1.0) !important;
+}
+
+#navitem.active {
+  background-color: rgba(230, 230, 230, $alpha: 1.0) !important;
+}
