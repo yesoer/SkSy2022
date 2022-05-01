@@ -20,7 +20,13 @@ $(function() {
 // setup datepicker
 $(function() {
   $('.datepicker').datepicker({
-    format: 'mm/dd/yyyy',
-    startDate: '-3d'
+    format: 'yyyy/mm/dd',
+    autoclose: true,
+    startDate: '+0d',
+    todayHighlight: true
   });
+});
+
+// setup slider
+$(".slider").slider({
 });
