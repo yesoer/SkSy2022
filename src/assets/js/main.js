@@ -15,3 +15,11 @@ $(function() {
 	var pathname = window.location.pathname;
 	$('.nav > li > a[href="'+pathname+'"]').parent().addClass('active');
 })
+
+// setup datepicker
+$(function() {
+  $('.datepicker').datepicker({
+    format: 'mm/dd/yyyy',
+    startDate: '-3d'
+  });
+});
