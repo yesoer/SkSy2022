@@ -1,3 +1,8 @@
+/* npm package imports */
+import 'bootstrap';
+import 'bootstrap-slider';
+import 'bootstrap-datepicker';
+
 $(function() {
     // navbar toggle behavior
     $('#navbarCollapse').on('click', function() {
