@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+    
     <!-- Vertical navbar -->
 	<div class="vertical-nav bg-white" id="navbar">
 		<ul class="nav flex-column bg-white mb-0">
@@ -42,18 +42,19 @@
 	</div>
 	<!-- End vertical navbar -->
 
+
     <!-- Page content holder -->
     <div class="page-content p-5" id="content">
 
         <!-- Nav bar opener -->
         <button id="navbarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4">
             <i class="bi bi-list"></i>
+            
         </button>
-
 
         <!-- Page content : new TODO -->
         <div>
-            <h4>New ToDo</h4>
+            <h4>Edit ToDo</h4>
             <label>Progress :</label>
             <div>
                 <span style="margin-right: 2mm;"><b>0%</b></span>
@@ -66,9 +67,12 @@
             </div>
             <label>Task :</label>
             <div>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Describe Task"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <button style="margin-top: 5px;" class="btn btn-primary">Create</button>
+            <button style="margin-top: 5px;" class="btn btn-secondary" id="backButton">Exit</button>
+            
+            <button style="margin-top: 5px;" class="btn btn-primary">Save Changes</button>
+            
         </div>
 
     </div>
@@ -79,6 +83,7 @@
 
     <!-- JS -->
     <script type="module" src="./assets/js/main.js"></script>
+
 </body>
 
 </html>
