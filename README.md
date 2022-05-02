@@ -17,6 +17,12 @@ Within `/src/assets/scss/abstracts/_varibales.scss` you may override bootstraps 
 
 ## Run/build the project
 
+First in the root folder, you should run 
+```
+npm i
+```
+to install all required packages.
+
 As found in the package.json the following commands are configured :
 
 ```
