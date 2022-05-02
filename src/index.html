@@ -9,8 +9,8 @@
 	<title>SkSy</title>
 
 	<!-- (S)CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/@icon/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="./assets/scss/main.scss" />
+	<link rel="stylesheet" href="https://unpkg.com/@icon/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" href="./assets/scss/main.scss" />
 </head>
 
 <body>
@@ -31,6 +31,11 @@
 			<li class="nav-item" id="navitem">
 				<a href="imprint.html" class="nav-link text-dark font-italic">
 					Imprint
+				</a>
+			</li>
+			<li class="nav-item d-none" id="navitem">
+				<a href="editTODO.html" class="nav-link text-dark font-italic">
+					Edit TODO
 				</a>
 			</li>
 		</ul>
@@ -64,10 +69,42 @@
 					<td>Monday, 9th Mai 2022, 11:55</td>
 					<td>20%</td>
 					<td>
-						<div class="table-btn">
+						<div id="deleteTask" class="table-btn">
 							<i class="bi bi-x"></i>
 						</div>
-						<div class="table-btn">
+						<div class="table-btn" id="editTask1">
+							<i class="bi bi-pencil-square"></i>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td>
+						review basic TODO App
+					</td>
+					<td>Wednesday, 11th Mai 2022, 10:05</td>
+					<td>0%</td>
+					<td>
+						<div id="deleteTask" class="table-btn">
+							<i class="bi bi-x"></i>
+						</div>
+						<div class="table-btn" id="editTask2">
+							<i class="bi bi-pencil-square"></i>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">3</th>
+					<td>
+						Enjoy afterwork beer
+					</td>
+					<td>Wednesday, 11th Mai 2022, 18:00</td>
+					<td>0%</td>
+					<td>
+						<div id="deleteTask" class="table-btn">
+							<i class="bi bi-x"></i>
+						</div>
+						<div class="table-btn" id="editTask3">
 							<i class="bi bi-pencil-square"></i>
 						</div>
 					</td>
@@ -82,7 +119,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 	<!-- JS -->
-    <script type="module" src="./assets/js/main.js"></script>
+	<script type="module" src="./assets/js/main.js"></script>
 </body>
 
 </html>
