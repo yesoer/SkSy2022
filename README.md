@@ -10,8 +10,8 @@ To build the project parcel is used.
 ## Code Structure
 
 The actual code is in `/src`.
-It's grouped into `index.html` as the source, a `js` folder and a `scss` folder. 
-The latter two each contain a `bootstrap.js/scss`, which are used for importing the corresponding files from the `node_modules`, aswell as a `main.js/scss` containing our own implementaions and style classes.
+It's grouped into `index.html` as the source along with some other .html pages, a `js` folder and a `scss` folder. 
+The latter two each contain a `main.js/scss`, which are used for importing the bootstrap package files from the `node_modules`, aswell as our own implementaions and style classes.
 Within `/src/assets/scss/abstracts/_varibales.scss` you may override bootstraps sas configuration.
 
 
