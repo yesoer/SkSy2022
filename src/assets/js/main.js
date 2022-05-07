@@ -24,11 +24,26 @@ let sampleData = [
     progress:0,
   }
 ];
+// depending on what page is open do different setup stuff
 $(function() {
-    // navbar toggle behavior
-    $('#navbarCollapse').on('click', function() {
-      $('#navbar, #content').toggleClass('active');
-    });
+  switch(window.location.pathname) {
+    case "/index.html": todoTableSetup(); break;
+    case "/editTODO.html": todoEditSetup(); break;
+    default: return
+  }
+});
+// fill the edit form with with the data form localStorage
+function todoEditSetup() {
+}
+// fill table and setup edit/delete functionality for each row
+function todoTableSetup() {
+}
+
+$(function() {
+  // navbar toggle behavior
+  $('#navbarCollapse').on('click', function() {
+    $('#navbar, #content').toggleClass('active');
+  });
 });
 
 $(function() {
