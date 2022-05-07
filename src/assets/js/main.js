@@ -4,6 +4,26 @@ import 'bootstrap-slider';
 window.$ = window.jQuery = require("jquery");
 import 'bootstrap-datepicker';
 
+
+// this sample data will be replaced with a call to the server 
+// to fetch persistent todo data from the DB
+let sampleData = [
+  {
+    content : "create basic TODO App",
+    dueDate :1652133599, // due date as unix ts
+    progress:99, // 0 <= p <= 100
+  },
+  {
+    content : "review basic TODO App",
+    dueDate :1652256900,
+    progress:0,
+  },
+  {
+    content : "Enjoy afterwork beer",
+    dueDate :1652284800,
+    progress:0,
+  }
+];
 $(function() {
     // navbar toggle behavior
     $('#navbarCollapse').on('click', function() {
