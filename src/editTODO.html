@@ -58,16 +58,16 @@
             <label>Progress :</label>
             <div>
                 <span style="margin-right: 2mm;"><b>0%</b></span>
-                <input type="text" class="slider" data-provide="slider" data-slider-min="0" data-slider-max="100" data-slider-step="5" data-slider-value="0">
+                <input id="todoProgress" class="slider" data-provide="slider" data-slider-min="0" data-slider-max="100" data-slider-step="5" data-slider-value="0">
                 <span style="margin-left: 2mm;"><b>100%</b></span>
             </div>
             <label>Due date :</label>
             <div>
-                <input data-provide="datepicker" class="datepicker" placeholder="01.01.2100"></input>
+                <input id="todoDueDate" data-provide="datepicker" class="datepicker" placeholder="01.01.2100"></input>
             </div>
             <label>Task :</label>
             <div>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="todoContent" rows="3"></textarea>
             </div>
             <button style="margin-top: 5px;" class="btn btn-secondary" id="backButton">Exit</button>
             

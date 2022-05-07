@@ -24,6 +24,7 @@ let sampleData = [
     progress:0,
   }
 ];
+
 // depending on what page is open do different setup stuff
 $(function() {
   switch(window.location.pathname) {
@@ -32,9 +33,19 @@ $(function() {
     default: return
   }
 });
+
 // fill the edit form with with the data form localStorage
 function todoEditSetup() {
+  const editTodoStr = window.localStorage.getItem("editItem")
+  const editTodo = JSON.parse(editTodoStr)
+  $('#todoProgress').slider('setValue', editTodo.progress);
+  $("#todoDueDate").datepicker("setDate", new Date(editTodo.dueDate * 1000))
+  $("#todoContent").val(editTodo.content)
+
+  // clean up localStorage
+  window.localStorage.removeItem("editItem")
 }
+
 // fill table and setup edit/delete functionality for each row
 function todoTableSetup() {
   // get body of todo table
