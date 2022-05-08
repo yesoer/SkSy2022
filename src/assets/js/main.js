@@ -43,7 +43,7 @@ function todoEditSetup() {
   $("#todoContent").val(editTodo.content)
 
   // clean up localStorage
-  window.localStorage.removeItem("editItem")
+   window.localStorage.removeItem("editItem")
 }
 
 // fill table and setup edit/delete functionality for each row
