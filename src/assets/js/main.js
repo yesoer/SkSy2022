@@ -30,7 +30,9 @@ $(function() {
   switch(window.location.pathname) {
     case "/index.html": todoTableSetup(); break;
     case "/editTODO.html": todoEditSetup(); break;
-    default: return
+    case "/newTODO.html": break;
+    case "/imprint.html": break;
+    default: todoTableSetup();
   }
 });
 
