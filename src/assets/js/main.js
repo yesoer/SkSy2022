@@ -34,7 +34,7 @@ $(function() {
   }
 });
 
-// fill the edit form with with the data form localStorage
+// fill the edit form with the data from localStorage
 function todoEditSetup() {
   const editTodoStr = window.localStorage.getItem("editItem")
   const editTodo = JSON.parse(editTodoStr)
@@ -114,23 +114,6 @@ $(function() {
     autoclose: true,
     startDate: '+0d',
     todayHighlight: true
-  });
-});
-
-// setup slider
-$(".slider").slider({
-});
-
-//setup Editing functions
-$(function() {
-  $('#editTask1').on('click', function() {
-    window.location.replace("/editTODO.html");
-  });
-  $('#editTask2').on('click', function() {
-    window.location.replace("/editTODO.html");
-  });
-  $('#editTask3').on('click', function() {
-    window.location.replace("/editTODO.html");
   });
 });
 
