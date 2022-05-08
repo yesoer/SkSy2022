@@ -20,6 +20,7 @@ Within `/src/assets/scss/abstracts/_varibales.scss` you may override bootstraps 
 First in the root folder, you should run 
 ```
 npm i
+npm install @popperjs/core //may be needed
 ```
 to install all required packages.
 
