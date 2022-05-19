@@ -50,21 +50,31 @@ func pingHandler() gin.HandlerFunc {
 }
 
 func getTodoHandler() gin.HandlerFunc {
+	todoColl := client.Database("todoDB").Collection("todos")
+
 	return func(c *gin.Context) {
-		// TODO : get todo from db
+		// TODO : get todos from db
+		_, _ = todoColl.Find(ctx, bson.M{})
 	}
 }
 func putTodoHandler() gin.HandlerFunc {
+	_ = client.Database("todoDB").Collection("todos")
+
 	return func(c *gin.Context) {
 		// TODO : update todo in db
 	}
 }
 func postTodoHandler() gin.HandlerFunc {
+	todoColl := client.Database("todoDB").Collection("todos")
+
 	return func(c *gin.Context) {
 		// TODO : create todo in db
+		todoColl.InsertOne(ctx, bson.M{"bar": "foo"})
 	}
 }
 func deleteTodoHandler() gin.HandlerFunc {
+	_ = client.Database("todoDB").Collection("todos")
+
 	return func(c *gin.Context) {
 		// TODO : delete todo from db
 	}
