@@ -12,6 +12,12 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
+type Todo struct {
+	Progress int    `json:"progress"`
+	Content  string `json:"content"`
+	DueDate  int32  `json:"dueDate"` // stores unix ts
+}
+
 func main() {
 
 	// initalize router and handlers
@@ -69,8 +75,14 @@ func postTodoHandler() gin.HandlerFunc {
 	todoColl := client.Database("todoDB").Collection("todos")
 
 	return func(c *gin.Context) {
-		// TODO : create todo in db
-		todoColl.InsertOne(ctx, bson.M{"bar": "foo"})
+		var todo Todo
+		err := c.Bind(&todo)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		todoColl.InsertOne(ctx, todo)
 	}
 }
 func deleteTodoHandler() gin.HandlerFunc {
