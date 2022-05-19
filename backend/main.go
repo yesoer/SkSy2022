@@ -68,7 +68,14 @@ func putTodoHandler() gin.HandlerFunc {
 	_ = client.Database("todoDB").Collection("todos")
 
 	return func(c *gin.Context) {
-		// TODO : update todo in db
+		var todo Todo
+		err := c.Bind(&todo)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		todoColl.UpdateOne(ctx, todo)
 	}
 }
 func postTodoHandler() gin.HandlerFunc {
