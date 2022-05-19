@@ -30,6 +30,9 @@ To avoid confusion (because right now this design principle isn't used in any pr
 The idea is that any setup code for that specific route can be run before the actual handler is returned. 
 This way it's executed exactly once and clearly distinguishable from any other (setup) code.
 
+**Storage :**
+For persistent storage we use mongoDB.
+
 ## Running/building
 
 **Frontend :**
@@ -55,3 +58,11 @@ Run the server using the go tools :
 go run main.go
 ```
 It will start on localhost, port 8080.
+
+**Storage :**
+
+A local mongodb may be started using
+```
+brew services start mongodb-community
+```
+and to stop it just replace "start" with "stop".
