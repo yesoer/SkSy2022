@@ -65,7 +65,7 @@ func getTodoHandler() gin.HandlerFunc {
 	}
 }
 func putTodoHandler() gin.HandlerFunc {
-	_ = client.Database("todoDB").Collection("todos")
+	todoColl = client.Database("todoDB").Collection("todos")
 
 	return func(c *gin.Context) {
 		var todo Todo
