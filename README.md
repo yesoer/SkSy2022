@@ -25,6 +25,7 @@ Within `/src/assets/scss/abstracts/_varibales.scss` you may override bootstraps 
 **Backend :**
 There are the classic `go.mod` and `go.sum` files that a go module contains. 
 Furthermore there is the `main.go` containing the code that sets up and starts the router (currently the default router) that makes up the server.
+The route handler code can be found in `todohandlers.go`.
 
 To avoid confusion (because right now this design principle isn't used in any pratical way), instead of writing handlers, we write functions that return handlers.
 The idea is that any setup code for that specific route can be run before the actual handler is returned. 
@@ -55,7 +56,7 @@ Parcel is a dev dependency so it will not be part of the final build.
 
 Run the server using the go tools :
 ```
-go run main.go
+go run main.go todoHandlers.go
 ```
 It will start on localhost, port 8080.
 
