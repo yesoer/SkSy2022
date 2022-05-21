@@ -4,27 +4,6 @@ import 'bootstrap-slider';
 window.$ = window.jQuery = require("jquery");
 import 'bootstrap-datepicker';
 
-
-// this sample data will be replaced with a call to the server 
-// to fetch persistent todo data from the DB
-let sampleData = [
-  {
-    content : "create basic TODO App",
-    dueDate :1652133599, // due date as unix ts
-    progress:99, // 0 <= p <= 100
-  },
-  {
-    content : "review basic TODO App",
-    dueDate :1652256900,
-    progress:0,
-  },
-  {
-    content : "Enjoy afterwork beer",
-    dueDate :1652284800,
-    progress:0,
-  }
-];
-
 // depending on what page is open do different setup stuff
 $(function() {
   switch(window.location.pathname) {
@@ -50,13 +29,27 @@ function todoEditSetup() {
 
 // fill table and setup edit/delete functionality for each row
 function todoTableSetup() {
-  // get body of todo table
-  let tableBody = document.getElementById("todoTable");
+  // get todo list from the server
+  fetch('http://localhost:8080/todo', {
+        method: 'GET',
+  })
+  .then(res => res.json())
+  .then(res => {
+    // get body of todo table
+    let tableBody = document.getElementById("todoTable");
+    fillTable(tableBody, res)
+  }) 
+}
+
+// fills the given todo table body element with the given todo data
+function fillTable(tableBodyElem, data) {
+  if (!data)
+    return
 
   // fill table from fetched todo data
-  for (const [i, todo] of sampleData.entries()) {
+  for (const [i, todo] of data.entries()) {
     let tr = document.createElement('TR');
-    tableBody.appendChild(tr);
+    tableBodyElem.appendChild(tr);
 
     // create # cell
     let th = document.createElement('TH')
@@ -68,7 +61,10 @@ function todoTableSetup() {
     for (let [key, value] of Object.entries(todo)) {
       let td = document.createElement('TD')
       
-      if (key === "dueDate")
+      // handle special cell cases
+      if (key === "_id")
+        continue
+      if (key === "duedate")
         value = new Date(value * 1000).toLocaleDateString()
       
       td.appendChild(document.createTextNode(value))
@@ -93,7 +89,7 @@ function todoTableSetup() {
       window.localStorage.setItem("editItem", JSON.stringify(todo))
       window.location.replace("/editTODO.html");
     })
-  } 
+  }
 }
 
 $(function() {
