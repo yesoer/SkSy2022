@@ -57,17 +57,32 @@ func pingHandler() gin.HandlerFunc {
 }
 
 func getTodoHandler() gin.HandlerFunc {
-	todoColl := client.Database("todoDB").Collection("todos")
 
 	return func(c *gin.Context) {
-		// TODO : get todos from db
-		_, _ = todoColl.Find(ctx, bson.M{})
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		todoColl := client.Database("todoDB").Collection("todos")
+
+		// get todos from db
+		todosCusor, err := todoColl.Find(ctx, bson.M{})
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		var todos []bson.M
+		if err = todosCusor.All(ctx, &todos); err != nil {
+			fmt.Println(err)
+		}
+
+		c.JSON(200, todos)
 	}
 }
+
 func putTodoHandler() gin.HandlerFunc {
-	todoColl = client.Database("todoDB").Collection("todos")
 
 	return func(c *gin.Context) {
+		_ = client.Database("todoDB").Collection("todos")
+
 		var todo Todo
 		err := c.Bind(&todo)
 		if err != nil {
@@ -75,13 +90,16 @@ func putTodoHandler() gin.HandlerFunc {
 			return
 		}
 
-		todoColl.UpdateOne(ctx, todo)
+		// todoColl.UpdateOne(ctx, todo)
 	}
 }
+
 func postTodoHandler() gin.HandlerFunc {
 	todoColl := client.Database("todoDB").Collection("todos")
 
 	return func(c *gin.Context) {
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+
 		var todo Todo
 		err := c.Bind(&todo)
 		if err != nil {
@@ -92,6 +110,7 @@ func postTodoHandler() gin.HandlerFunc {
 		todoColl.InsertOne(ctx, todo)
 	}
 }
+
 func deleteTodoHandler() gin.HandlerFunc {
 	_ = client.Database("todoDB").Collection("todos")
 
@@ -99,6 +118,7 @@ func deleteTodoHandler() gin.HandlerFunc {
 		// TODO : delete todo from db
 	}
 }
+
 func optionsTodoHandler() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
