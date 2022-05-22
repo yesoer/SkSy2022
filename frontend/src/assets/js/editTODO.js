@@ -24,11 +24,13 @@ $(function() {
       const progress = $('#todoProgress').slider('getValue')
       const dueDate = $("#todoDueDate").datepicker("getDate")?.getTime() / 1000
       const content = $("#todoContent").val()
+      const preEditTodo = window.localStorage.getItem("editItem")
   
       const todo = {
         progress,
         content,
-        dueDate
+        dueDate,
+        _id : preEditTodo._id
       };
       
       fetch('http://localhost:8080/todo', {
