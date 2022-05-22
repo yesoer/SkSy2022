@@ -5,9 +5,11 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type Todo struct {
+	Id       string `json:"_id"`
 	Progress int    `json:"progress"`
 	Content  string `json:"content"`
 	DueDate  int32  `json:"dueDate"` // stores unix ts
@@ -69,10 +71,26 @@ func postTodoHandler() gin.HandlerFunc {
 }
 
 func deleteTodoHandler() gin.HandlerFunc {
-	_ = client.Database("todoDB").Collection("todos")
+	todoColl := client.Database("todoDB").Collection("todos")
 
 	return func(c *gin.Context) {
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+
 		// TODO : delete todo from db
+		var todo Todo
+		err := c.Bind(&todo)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		id, err := primitive.ObjectIDFromHex(todo.Id)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		todoColl.DeleteOne(ctx, bson.M{"_id": id})
 	}
 }
 

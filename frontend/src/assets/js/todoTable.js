@@ -51,14 +51,32 @@ function fillTable(tableBodyElem, data) {
                           <i class="bi bi-pencil-square"></i>
                         </div>
                       </td>`
-  
+      
+      tr.id = todo._id
+
       // set edit/delete click functionality
       $(`#deleteTask${i}`).on('click', function() {
+        // delete todo and remove row from table
+        deleteTodo(todo._id).then(() => {
+            $(`#${todo._id}`).remove();
+        })
       })
   
       $(`#editTask${i}`).on('click', function() {
+        // store todo in localStorage for edit
         window.localStorage.setItem("editItem", JSON.stringify(todo))
         window.location.replace("/editTODO.html");
       })
     }
+}
+
+// sends delete todo request to server
+async function deleteTodo(todoId) {
+    fetch('http://localhost:8080/todo', {
+        method: 'DELETE',
+        body: JSON.stringify({_id : todoId}),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
 }
