@@ -21,9 +21,9 @@ $(function() {
 $(function() {
     $("#editTodo").on('click', function() {
   
-      const progress = $('#newTodoProgress').slider('getValue')
-      const dueDate = $("#newTodoDueDate").datepicker("getDate")?.getTime() / 1000
-      const content = $("#newTodoContent").val()
+      const progress = $('#todoProgress').slider('getValue')
+      const dueDate = $("#todoDueDate").datepicker("getDate")?.getTime() / 1000
+      const content = $("#todoContent").val()
   
       const todo = {
         progress,
