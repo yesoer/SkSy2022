@@ -58,6 +58,7 @@ function fillTable(tableBodyElem, data) {
   
       $(`#editTask${i}`).on('click', function() {
         window.localStorage.setItem("editItem", JSON.stringify(todo))
+        window.localStorage.getItem("editItem",)
         window.location.replace("/editTODO.html");
       })
     }
