@@ -38,9 +38,9 @@ func getTodoHandler() gin.HandlerFunc {
 }
 
 func putTodoHandler() gin.HandlerFunc {
-
 	return func(c *gin.Context) {
-		todoColl = client.Database("todoDB").Collection("todos")
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		todoColl := client.Database("todoDB").Collection("todos")
 
 		var todo Todo
 		err := c.Bind(&todo)
@@ -48,13 +48,18 @@ func putTodoHandler() gin.HandlerFunc {
 			fmt.Println(err)
 			return
 		}
+
 		id, err := primitive.ObjectIDFromHex(todo.Id)
 		if err != nil {
 			fmt.Println(err)
 			return
 		}
 
-		todoColl.UpdateOne(ctx, bson.M{"_id": id})
+		todoColl.UpdateOne(ctx, bson.M{"_id": id}, bson.M{
+			"$set": bson.M{
+				"progress": todo.Progress,
+				"content":  todo.Content,
+				"dueDate":  todo.DueDate}})
 	}
 }
 
