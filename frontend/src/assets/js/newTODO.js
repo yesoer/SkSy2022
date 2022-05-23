@@ -19,5 +19,8 @@ $(function() {
               'Content-type': 'application/json; charset=UTF-8'
           }
       })
+
+      // return to home page
+      window.location.replace("/index.html");
     })
 })

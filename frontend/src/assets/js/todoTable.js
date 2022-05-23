@@ -16,7 +16,7 @@ export function todoTableSetup() {
 function fillTable(tableBodyElem, data) {
     if (!data)
       return
-  
+
     // fill table from fetched todo data
     for (const [i, todo] of data.entries()) {
       let tr = document.createElement('TR');
@@ -27,7 +27,7 @@ function fillTable(tableBodyElem, data) {
       th.appendChild(document.createTextNode(i+1))
       th.scope = "row"
       tr.appendChild(th)
-      
+
       // create property cells
       for (let [key, value] of Object.entries(todo)) {
         let td = document.createElement('TD')
@@ -35,7 +35,7 @@ function fillTable(tableBodyElem, data) {
         // handle special cell cases
         if (key === "_id")
           continue
-        if (key === "duedate")
+        if (key === "dueDate")
           value = new Date(value * 1000).toLocaleDateString()
         
         td.appendChild(document.createTextNode(value))

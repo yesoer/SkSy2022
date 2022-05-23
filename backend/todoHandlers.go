@@ -76,7 +76,7 @@ func postTodoHandler() gin.HandlerFunc {
 			return
 		}
 
-		todoColl.InsertOne(ctx, todo)
+		todoColl.InsertOne(ctx, bson.M{"progress": todo.Progress, "content": todo.Content, "dueDate": todo.DueDate})
 	}
 }
 
