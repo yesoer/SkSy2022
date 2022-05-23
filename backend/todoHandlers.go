@@ -40,7 +40,7 @@ func getTodoHandler() gin.HandlerFunc {
 func putTodoHandler() gin.HandlerFunc {
 
 	return func(c *gin.Context) {
-		_ = client.Database("todoDB").Collection("todos")
+		todoColl = client.Database("todoDB").Collection("todos")
 
 		var todo Todo
 		err := c.Bind(&todo)
@@ -48,8 +48,13 @@ func putTodoHandler() gin.HandlerFunc {
 			fmt.Println(err)
 			return
 		}
+		id, err := primitive.ObjectIDFromHex(todo.Id)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
 
-		// todoColl.UpdateOne(ctx, todo)
+		todoColl.UpdateOne(ctx, bson.M{"_id": id})
 	}
 }
 
