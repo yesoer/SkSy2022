@@ -5,15 +5,12 @@ export function todoEditSetup() {
     $('#todoProgress').slider('setValue', editTodo.progress);
     $("#todoDueDate").datepicker("setDate", new Date(editTodo.duedate * 1000))
     $("#todoContent").val(editTodo.content)
-  
-    // clean up localStorage
-     window.localStorage.removeItem("editItem")
 }
 
 // return to main Page button
 $(function() {
     $('#backButton').on('click', function() {
-      window.location.replace("/index.html");
+        returnToHome()
     });
 });
 
@@ -24,8 +21,10 @@ $(function() {
       const progress = $('#todoProgress').slider('getValue')
       const dueDate = $("#todoDueDate").datepicker("getDate")?.getTime() / 1000
       const content = $("#todoContent").val()
-      const preEditTodo = window.localStorage.getItem("editItem")
-  
+      
+      const preEditTodoStr = window.localStorage.getItem("editItem")
+      const preEditTodo = JSON.parse(preEditTodoStr)
+
       const todo = {
         progress,
         content,
@@ -40,5 +39,13 @@ $(function() {
               'Content-type': 'application/json; charset=UTF-8'
           }
       })
+
+      returnToHome()
     })
 })
+
+function returnToHome() {
+    // clean up localStorage
+    window.localStorage.removeItem("editItem")
+    window.location.replace("/index.html");
+}
