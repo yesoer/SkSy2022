@@ -3,7 +3,7 @@ export function todoEditSetup() {
     const editTodoStr = window.localStorage.getItem("editItem")
     const editTodo = JSON.parse(editTodoStr)
     $('#todoProgress').slider('setValue', editTodo.progress);
-    $("#todoDueDate").datepicker("setDate", new Date(editTodo.duedate * 1000))
+    $("#todoDueDate").datepicker("setDate", new Date(editTodo.dueDate * 1000))
     $("#todoContent").val(editTodo.content)
 }
 
